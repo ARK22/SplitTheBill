@@ -22,3 +22,46 @@
   border-color: #80B34F !important;
   margin-bottom: 5px !important;
 }
+
+
+.nav-header {
+  display: inline-block;
+  font-size: 150%;
+  position:relative;
+  top: -5px;
+}
+
+#search {
+  padding-top:0px;
+}
+
+#topnav {
+  padding-bottom:0px;
+}
+
+.nav-item {
+  margin-bottom: 15px;
+}
+.nav-link {
+  color: #80B34F;
+  font-size:150%;
+}
+
+a:hover {
+  color: rgb(99, 138, 62);
+}
+
+.chartjs-render-monitor {
+  position: relative !important;
+}
+
+#pieChart {
+  height: 65% !important;
+  width: 65% !important;
+ margin-top: 100px !important;
+}
+
+.flex-column {
+  float: left;
+  margin-top: 30px;
+}
