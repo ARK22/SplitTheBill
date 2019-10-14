@@ -48,20 +48,38 @@
 }
 
 a:hover {
-  color: rgb(99, 138, 62);
-}
-
-.chartjs-render-monitor {
-  position: relative !important;
-}
-
-#pieChart {
-  height: 65% !important;
-  width: 65% !important;
- margin-top: 100px !important;
+  color: rgb(99, 138, 62) !important;
 }
 
 .flex-column {
   float: left;
   margin-top: 30px;
+}
+
+.gj-datepicker {
+  margin-top: 10px;
+}
+
+.parent {
+  display: flex;
+}
+
+.child1 {
+  width:150px;
+}
+
+.child2 {
+  flex-grow: 1;
+  display: flex;
+  margin-top: 50px;
+}
+
+.grandchild1 {
+  width: 300px;
+  margin-left: 100px;
+}
+
+.grandchild2 {
+  flex-grow: 1;
+  text-align: center;
 }
