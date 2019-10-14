@@ -1,0 +1,24 @@
+{
+  "name": "splitthebill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jquery.min.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "redux": "^4.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARK22/SplitTheBill.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ARK22/SplitTheBill/issues"
+  },
+  "homepage": "https://github.com/ARK22/SplitTheBill#readme"
+}
