@@ -51,6 +51,8 @@ a:hover {
   color: rgb(99, 138, 62) !important;
 }
 
+
+
 .flex-column {
   float: left;
   margin-top: 30px;
@@ -82,4 +84,17 @@ a:hover {
 .grandchild2 {
   flex-grow: 1;
   text-align: center;
+}
+
+#signup {
+  margin-top: 70px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#signuplogo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
