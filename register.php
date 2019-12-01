@@ -10,6 +10,7 @@ session_start();
 
 require 'connect.php';
 
+
 if (isset($_POST['register'])) {
 	//get values from user submitted form
 	//TODO: check values for errors, length, etc before insertion
@@ -20,30 +21,25 @@ if (isset($_POST['register'])) {
 	$password = mysqli_real_escape_string($conn, $_POST['password']);
 	$userid = uniqid('1');
 	
+	echo $username;
+	
 	
 	//check if username exists
-	$sqlFindUsername = "SELECT COUNT(Username) AS num FROM Users WHERE Username = $username";
-	$stmtFindUsername = $pdo->prepare($sqlFindUsername);
-	$stmtFindUsername->bindValue(':username', $username);
+	$sqlFindUsername = "SELECT * FROM users WHERE username =?";
+	$stmtFindUsername = $conn->prepare($sqlFindUsername);
+	$stmtFindUsername->bind_param('s', $username);
 	$stmtFindUsername->execute();
-	$row = $stmtFindUsername->fetch(PDO::FETCH_ASSOC);
 	
 	//TODO: Redirect back to signup page if username already exists
-	if ($row['num'] > 0) {
+	if (!$stmtFindUsername->execute()) {
 		die("That username already exists, please pick a new username.");
 	}
-	
+	$stmtFindUsername->close();
 	$passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
 	
-	$sqlInsertUser = "INSERT INTO Users (Username, LastName, FirstName, Email, PasswordHash, UserID) VALUES ('$username', '$lastname', '$firstname', '$email', '$password', '$userid')";
-	$stmtInsert = $pdo->prepare($sqlInsertUser);
-	
-	$stmt->bindValue('username', $username);
-	$stmt->bindValue('lastname', $lastname);
-	$stmt->bindValue('firstname', $firstname);
-	$stmt->bindValue('email', $email);
-	$stmt->bindValue('password', $passwordHash);
-	
+	$sqlInsertUser = "INSERT INTO Users (Username, LastName, FirstName, Email, PasswordHash) VALUES (?,?,?,?,?)";
+	$stmtInsert = $conn->prepare($sqlInsertUser);
+	$stmtInsert->bind_param('sssss', $username, $lastname, $firstname, $email, $passwordHash);
 	$result = $stmtInsert->execute();
 	
 	
@@ -51,7 +47,7 @@ if (isset($_POST['register'])) {
 		echo "You have registered successfully";
 	}
 	else {
-		echo "error";
+		array_push($errors, "error");
 	}
 
 	
