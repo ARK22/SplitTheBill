@@ -26,15 +26,22 @@ if (isset($_POST['register'])) {
 	
 	
 	//check if username exists
-	$sqlFindUsername = "SELECT * FROM users WHERE username =?";
+	$sqlFindUsername = "SELECT Username FROM users WHERE username =?";
 	$stmtFindUsername = $conn->prepare($sqlFindUsername);
 	$stmtFindUsername->bind_param('s', $username);
 	$stmtFindUsername->execute();
 	
 	//TODO: Redirect back to signup page if username already exists
-	if (!$stmtFindUsername->execute()) {
-		die("That username already exists, please pick a new username.");
+	if ($stmtFindUsername->execute())
+	{
+		mysqli_stmt_store_result($stmtFindUsername);
+		
+	if (mysqli_stmt_num_rows($stmtFindUsername) == 1)
+	{
+		echo "user already exists";
+		header("location:error");
 	}
+	
 	$stmtFindUsername->close();
 	$passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));
 	
@@ -53,5 +60,6 @@ if (isset($_POST['register'])) {
 
 	
 	
+}
 }
 ?>
