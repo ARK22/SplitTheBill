@@ -1,3 +1,18 @@
+<?php
+$errors = array('firstname'=>'','lastname'=>'','email'=>'', 'username'=>'')
+
+if(isset($_POST['register']))
+{
+		$email = $_POSTp['email'];
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+		{
+			$errors['email'] = 'email must be a valid email address';
+		}
+
+
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +36,8 @@
 	<form id = "signup" form action ="register.php" method ="POST">
         <img class="mb-4" id="signuplogo" src="appLogo.png" alt="" width="250" height="245">
         <div class="form-group">
-            <label for="exampleInputFirstName">First Name</label>
+			
+			<label for="exampleInputFirstName">First Name</label>
             <input type="text" name="firstname" class="form-control" autofocus="" required="required" id="exampleInputFirstName" placeholder="Enter first name">
         </div>
         <div class="form-group">
@@ -32,7 +48,8 @@
             <label for="exampleInputEmail1">Email address</label>
             <input type="text" name = "email" class="form-control" autofocus="" required="required" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
+			<div class="red-text"><?php echo $errors['email'] ?></div>
+		</div>
         <div class="form-group">
             <label for="exampleInputUsername">Username</label>
             <input type="text" name = "username" class="form-control" autofocus="" required="required" id="exampleInputUsername" placeholder="Enter username">

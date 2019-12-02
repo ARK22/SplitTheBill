@@ -41,7 +41,7 @@ if (isset($_POST['register'])) {
 		
 	if (mysqli_stmt_num_rows($stmtFindUsername) == 1)
 	{
-		header("location:signup.html");
+		header("location:signup.php");
 		exit();
 	}
 	
@@ -57,7 +57,7 @@ if (isset($_POST['register'])) {
 		
 	if (mysqli_stmt_num_rows($stmtFindEmail) == 1)
 	{
-		header("location:signup.html");
+		header("location:signup.php");
 		exit();
 	}
 	
