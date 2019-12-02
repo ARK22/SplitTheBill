@@ -26,22 +26,6 @@ function clean($str) {
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
-	if(empty(trim($_POST["username"]))) {
-		$errors[] = 'Username missing';
-		$errorflag = true;
-	}else {
-		$username = mysqli_real_escape_string($conn, $_POST["username"]);
-	} 
-	
-	
-	if(empty(trim($_POST["password"]))) {
-		$errors[] = 'Password missing';
-		$errorflag = true;
-	}
-	else {
-		$password = mysqli_real_escape_string($conn, $_POST["password"]);
-	}
- 
 	if($errorflag) {
 		$_SESSION['ERRORS'] = $errors;
 		session_write_close();

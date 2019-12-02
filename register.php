@@ -45,7 +45,7 @@ if (isset($_POST['register'])) {
 	
 	
 	if ($result) {
-		echo "You have registered successfully";
+		header("location: login.html");
 	}
 	else {
 		array_push($errors, "error");
