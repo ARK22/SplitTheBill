@@ -18,11 +18,10 @@ if (isset($_POST['createbudget'])) {
 	$result = $stmtNewBudget->execute();
 	
 	if ($result) {
-		header("location: login.html");
+		header("location: home.html");
 	echo $userid;
 	}
 	else {
-		echo "failure";
 		header("location:fail");
 	}
 }
