@@ -85,8 +85,26 @@ a:hover {
   flex-grow: 1;
   text-align: center;
 }
+  
+.error {
+  width: 92%; 
+  margin: 0px auto; 
+  padding: 10px; 
+  border: 1px solid #990000; 
+  color: #a94442; 
+  background: #FF9999; 
+  border-radius: 3px;
+  text-align: left;
+}
 
 #signup {
+  margin-top: 70px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#createbudget{
   margin-top: 70px;
   width: 40%;
   margin-left: auto;

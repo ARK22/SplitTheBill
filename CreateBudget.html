@@ -18,40 +18,45 @@
 </head>
 
 <body>
-    <form id="signup">
+    <form id="createbudget" form action = 'newbudget.php' form method = 'post'>
         <img class="mb-4" id="signuplogo" src="appLogo.png" alt="" width="250" height="245">
         <h1 id="createBudgetHeader">Create a New Budget</h1>
         <div class="form-group">
             <label for="exampleBudgetName">Budget Name</label>
-            <input type="name" class="form-control" id="exampleInputBudgetName" placeholder="Enter Budget Name">
+            <input type="name" name="budgetname" class="form-control" id="exampleInputBudgetName" placeholder="Enter Budget Name">
         </div>
+		<small id="emailHelp" class="form-text text-muted">Add at least one item to your budget. You can add more later.</small>
+         <div class="form-group">
+            <label for="exampleItemName">Item Name</label>
+            <input type="name" class="form-control" id="exampleInputItemName" placeholder="Enter Item Name">
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Category for Item #1
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">Travel</button>
+              <button class="dropdown-item" type="button">Food</button>
+              <button class="dropdown-item" type="button">Lodging</button>
+              <button class="dropdown-item" type="button">Activities</button>
+              <button class="dropdown-item" type="button">Other</button>
+            </div>
+          </div>
         <div class="form-group">
-            <label for="exampleInputFlightBudget">Flight</label>
-            <input type="name" class="form-control" id="exampleInputFlightBudget" placeholder="Enter Flight Budget">
+            <label for="exampleInputItemCost">Item Cost</label>
+            <input type="name" class="form-control" id="exampleInputItemCost" placeholder="Enter a monetary value in USD">
         </div>
-        <div class="form-group">
-            <label for="exampleInputFoodBudget">Food</label>
-            <input type="name" class="form-control" id="exampleInputFoodBudget" placeholder="Enter Food Budget">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputHotelBudget">Hotel</label>
-            <input type="name" class="form-control" id="exampleInputHotelBudget" placeholder="Enter Hotel Budget">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputActivitiesBudget">Activities</label>
-            <input type="name" class="form-control" id="exampleInputActivitiesBudget" placeholder="Enter Activities Budget">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputOtherBudget">Other</label>
-            <input type="name" class="form-control" id="exampleInputOtherBudget" placeholder="Enter Other Budget">
-        </div>
-        <button type="submit" class="btn btn-primary">Create Budget</button>
+       
+        <button type="submit" name = "createbudget" class="btn btn-primary">Create Budget</button>
     </form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 </body>
