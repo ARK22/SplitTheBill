@@ -5,6 +5,7 @@ $firstname = "";
 $lastname = "";
 $email = "";
 $password = "";
+$errors = array();
 
 session_start();
 

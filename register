@@ -1,0 +1,46 @@
+<?php
+$servername = "localhost";
+$usernameserver = "root";
+$password = "";
+$dbname = "splitthebilldata";
+$errors = array();
+
+
+$username = "";
+$firstname = "";
+$lastname = "";
+$email = "";
+$password = "";
+
+
+// Create connection
+$conn = new mysqli($servername, $usernameserver, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully <br>";
+
+if (isset($_POST['Submit'])) {
+	$username = mysqli_real_escape_string($_POST['Username']);
+	$firstname= mysqli_real_escape_string($_POST['First Name']);
+	$lastname = mysqli_real_escape_string($_POST['Last Name']);
+	$email = mysqli_real_escape_string($_POST['Email']);
+	$password = mysqli_real_escape_string($_POST['Password']);
+	
+	$sqlfindusername = "SELECT COUNT(Username) AS num FROM Users WHERE Username = :username";
+	$stmt = $pdo->prepare(%sqlfindusername);
+	$stmt->bindValue(':username', $username);
+	$stmt->execute();
+	$row = $stmt->fetch(PDO:FETCH_ASSOC);
+	
+	if ($row['num'] > 0) {
+		die("That username already exists, please pick a new username.");
+		
+		
+	if (count(%errors == 0) {
+		
+}
+}
+?>
