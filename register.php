@@ -15,15 +15,19 @@ require 'connect.php';
 if (isset($_POST['register'])) {
 	//get values from user submitted form
 	//TODO: check values for errors, length, etc before insertion
-	$username = mysqli_real_escape_string($conn, $_POST['username']);
-	$firstname= mysqli_real_escape_string($conn, $_POST['firstname']);
-	$lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$password = mysqli_real_escape_string($conn, $_POST['password']);
-	$userid = uniqid('1');
+	$username = strip_tags(trim(mysqli_real_escape_string($conn, $_POST['username'])));
+	$firstname= strip_tags(trim(mysqli_real_escape_string($conn, $_POST['firstname'])));
+	$lastname = strip_tags(trim(mysqli_real_escape_string($conn, $_POST['lastname'])));
+	$email = strip_tags(trim(mysqli_real_escape_string($conn, $_POST['email'])));
 	
-	echo $username;
+	//check that email is valid, if invalid, return to signup
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+		{
+			header ("location:signup.html");
+			exit();
+		}
 	
+	$password =strip_tags(trim(mysqli_real_escape_string($conn, $_POST['password'])));
 	
 	//check if username exists
 	$sqlFindUsername = "SELECT Username FROM users WHERE username =?";
@@ -31,15 +35,30 @@ if (isset($_POST['register'])) {
 	$stmtFindUsername->bind_param('s', $username);
 	$stmtFindUsername->execute();
 	
-	//TODO: Redirect back to signup page if username already exists
 	if ($stmtFindUsername->execute())
 	{
 		mysqli_stmt_store_result($stmtFindUsername);
 		
 	if (mysqli_stmt_num_rows($stmtFindUsername) == 1)
 	{
-		echo "user already exists";
-		header("location:error");
+		header("location:signup.html");
+		exit();
+	}
+	
+	//check if email exists
+	$sqlFindEmail = "SELECT Email FROM users WHERE Email =?";
+	$stmtFindEmail= $conn->prepare($sqlFindEmail);
+	$stmtFindEmail->bind_param('s', $email);
+	$stmtFindEmail->execute();
+	
+	if ($stmtFindEmail->execute())
+	{
+		mysqli_stmt_store_result($stmtFindEmail);
+		
+	if (mysqli_stmt_num_rows($stmtFindEmail) == 1)
+	{
+		header("location:signup.html");
+		exit();
 	}
 	
 	$stmtFindUsername->close();
@@ -60,6 +79,7 @@ if (isset($_POST['register'])) {
 
 	
 	
+}
 }
 }
 ?>

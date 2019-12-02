@@ -13,12 +13,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 
-
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
-	$username = mysqli_real_escape_string($conn, $_POST["username"]);
-	$password = mysqli_real_escape_string($conn, $_POST["password"]);
+	$username = strip_tags(trim(mysqli_real_escape_string($conn, $_POST["username"])));
+	$password = strip_tags(trim(mysqli_real_escape_string($conn, $_POST["password"])));
 	if($errorflag) {
 		$_SESSION['ERRORS'] = $errors;
 		session_write_close();
